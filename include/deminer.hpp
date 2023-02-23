@@ -3,10 +3,14 @@
 
 /* #### INCLUDE #### */
 #include "constant.hpp"
+#include <stdlib.h>     
+#include <time.h>      
 
-enum Box { VOID = 0, ONE = 1, TWO = 2, TREE = 3, FOUR = 4, FIVE = 5, SIX = 6, SEVEN = 7, HEIGHT = 8, BOMB = 9 };
+enum class Box { VOID = 0, ONE = 1, TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6, SEVEN = 7, HEIGHT = 8, BOMB = 9 };
 
-enum DisplayBox { HIDE = 0, VOID = 1, ONE = 2, TWO = 3, TREE = 4, FOUR = 5, FIVE = 6, SIX = 7, SEVEN = 8, HEIGHT = 9, FLAG = 10, BOMB = 11 };
+Box& operator++( Box &b );
+
+enum class DisplayBox { HIDE = 0, VOID = 1, ONE = 2, TWO = 3, THREE = 4, FOUR = 5, FIVE = 6, SIX = 7, SEVEN = 8, HEIGHT = 9, FLAG = 10, BOMB = 11 };
 
 struct Position
 {
@@ -24,12 +28,14 @@ class Deminer
 public:
     Deminer();
     ~Deminer();
+    void createMap(Position &pos);
 
 private:
-    void addBomb(int &pos);
+    void addBomb(Position &pos);
+    void increase(int &pos);
 
-    Box grid[NB_CASE_X * NB_CASE_Y] = {Box::VOID};
-    DisplayBox displayGrid[NB_CASE_X * NB_CASE_Y] = {DisplayBox::VOID};
+    Box _grid[NB_CASE_X * NB_CASE_Y] = {Box::VOID};
+    DisplayBox _displayGrid[NB_CASE_X * NB_CASE_Y] = {DisplayBox::VOID};
 };
-ope
+
 #endif // __DEMINER_HPP__
