@@ -7,6 +7,7 @@ Valentin Michel
 
 /* #### INCLUDE #### */
 #include <iostream>
+#include "deminer.hpp"
 
 /* #### CORE #### */
 int main()
